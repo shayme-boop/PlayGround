@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f0e9">
+  <link rel="icon" href="data:,">
+  <title>Stitch & Story — The Rooftop Show</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Stitch and Story home"><span class="brand-mark">S<span>&</span></span><span class="brand-name">STITCH <i>&</i> STORY<small>YOUR STYLE. YOUR STORY.</small></span></a>
+      <div class="chapter-pill"><span class="chapter-dot"></span> CHAPTER 01 <b>·</b> THE ROOFTOP SHOW</div>
+      <button class="sound-button" id="soundToggle" aria-label="Toggle sound" title="Toggle sound">♫ <span>Sound off</span></button>
+    </header>
+
+    <section class="game-grid" aria-label="Fashion styling game">
+      <aside class="story-column">
+        <div class="story-card">
+          <div class="story-topline"><span class="eyebrow">TONIGHT'S THE NIGHT</span><span class="story-number">01 / 03</span></div>
+          <h1>A little<br>spotlight looks<br><em>good on you.</em></h1>
+          <p class="story-copy" id="storyCopy">Your best friend Jules has one last look to style before the rooftop runway begins. The city is glowing, the playlist is ready—and the final model just texted, “Make it feel like me.”</p>
+          <div class="story-note"><span class="note-icon">✳</span><span><b>Jules says</b><br><span id="storyQuote">“Something dreamy, but with a little main-character energy?”</span></span></div>
+          <div class="story-progress"><span>YOUR STORY</span><div class="progress-track"><i id="storyProgress"></i></div><b id="progressText">0 / 4</b></div>
+        </div>
+        <div class="goal-card"><div class="goal-icon">✦</div><div><strong>Tonight's brief</strong><p>Build a look that feels <b>romantic</b>, <b>confident</b> & ready to shine.</p></div></div>
+        <div class="journal-link"><span class="journal-icon">▤</span><div><b>Style journal</b><small><span id="looksCount">0</span> looks saved</small></div><span class="journal-arrow">↗</span></div>
+      </aside>
+
+      <section class="dressing-room" aria-label="Your model">
+        <div class="room-top"><span class="room-label"><span class="live-dot"></span> THE DRESSING ROOM</span><button class="reset-button" id="resetLook">↺ <span>Reset look</span></button></div>
+        <div class="scene-tag"><span>✦</span> ROOFTOP RUNWAY <span>✦</span></div>
+        <div class="model-stage">
+          <div class="sparkle sparkle-one">✦</div><div class="sparkle sparkle-two">✧</div><div class="sparkle sparkle-three">·</div>
+          <div class="cityline" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="spotlight"></div>
+          <div class="model-shadow"></div>
+          <svg class="doll" id="doll" viewBox="0 0 320 490" role="img" aria-label="Your fashion model">
+            <defs>
+              <linearGradient id="skin" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f4c9a9"/><stop offset="1" stop-color="#df9f7e"/></linearGradient>
+              <linearGradient id="hair" x1="0" x2="1"><stop stop-color="#47302e"/><stop offset=".5" stop-color="#70443a"/><stop offset="1" stop-color="#3a292c"/></linearGradient>
+              <filter id="soft"><feGaussianBlur stdDeviation="8"/></filter>
+            </defs>
+            <!-- legs -->
+            <path d="M127 307 Q121 351 122 389 L116 452 Q115 463 128 465 L140 464 Q146 461 145 451 L159 373 L174 452 Q175 463 188 463 L201 461 Q207 458 203 448 L197 382 Q203 342 189 307Z" fill="url(#skin)"/>
+            <path d="M127 368 Q140 378 156 370M169 371 Q186 380 199 369" fill="none" stroke="#d59173" stroke-width="2" opacity=".55"/>
+            <!-- shoes -->
+            <g id="shoeArt"></g>
+            <!-- arms behind outfit -->
+            <path d="M119 153 Q103 161 97 187 L79 246 Q74 260 84 265 Q94 270 100 257 L124 209 L139 176Z" fill="url(#skin)"/>
+            <path d="M194 153 Q210 161 216 187 L235 244 Q240 257 230 263 Q219 269 213 254 L189 209 L177 176Z" fill="url(#skin)"/>
+            <!-- neck and body -->
+            <path d="M143 119 L142 155 Q159 171 177 155 L176 119Z" fill="url(#skin)"/>
+            <path d="M126 151 Q145 139 160 147 Q177 139 194 151 L207 227 Q207 261 194 319 Q160 335 125 319 Q111 257 113 222Z" fill="url(#skin)"/>
+            <g id="bottomArt"></g><g id="topArt"></g>
+            <!-- face -->
+            <ellipse cx="160" cy="84" rx="41" ry="50" fill="url(#skin)"/>
+            <path d="M120 79 Q113 23 160 25 Q207 25 201 83 L191 61 Q174 58 163 47 Q146 62 126 62Z" fill="url(#hair)"/>
+            <path d="M119 67 Q107 116 126 145 L139 133 L130 86ZM200 65 Q212 116 194 146 L180 132 L190 83Z" fill="url(#hair)"/>
+            <path d="M140 88 Q148 83 154 88M167 88 Q175 83 181 88" stroke="#613f38" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M145 108 Q160 118 175 108" stroke="#b96469" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <circle cx="137" cy="100" r="5" fill="#e99b98" opacity=".35"/><circle cx="183" cy="100" r="5" fill="#e99b98" opacity=".35"/>
+            <!-- hands in front -->
+            <ellipse cx="83" cy="261" rx="8" ry="10" fill="url(#skin)"/><ellipse cx="229" cy="258" rx="8" ry="10" fill="url(#skin)"/>
+            <g id="accessoryArt"></g>
+            <g id="hairAccessory"></g>
+          </svg>
+          <div class="model-caption"><span id="modelMood">A blank canvas</span><span class="caption-star">✦</span></div>
+        </div>
+        <div class="look-summary" id="lookSummary"><span class="summary-sparkle">✧</span><span>Pick your first piece to start the look</span></div>
+      </section>
+
+      <aside class="wardrobe-column">
+        <div class="wardrobe-heading"><div><span class="eyebrow">THE LOOK</span><h2>Make it <em>yours.</em></h2></div><span class="piece-count" id="pieceCount">0/4</span></div>
+        <div class="category-tabs" role="tablist" aria-label="Clothing category">
+          <button class="category-tab active" data-category="top" role="tab" aria-selected="true">Tops <span>01</span></button>
+          <button class="category-tab" data-category="bottom" role="tab" aria-selected="false">Bottoms <span>02</span></button>
+          <button class="category-tab" data-category="shoes" role="tab" aria-selected="false">Shoes <span>03</span></button>
+          <button class="category-tab" data-category="accessory" role="tab" aria-selected="false">Extras <span>04</span></button>
+        </div>
+        <div class="wardrobe-content">
+          <div class="options-heading"><span id="categoryTitle">CHOOSE A TOP</span><span>✧ CURATED FOR YOU</span></div>
+          <div class="item-list" id="itemList"></div>
+          <div class="stylist-tip" id="stylistTip"><span class="tip-icon">✳</span><p><b>Stylist note</b><br>Some pieces are made for the spotlight. Trust your instinct!</p></div>
+        </div>
+        <button class="reveal-button" id="revealButton" disabled><span>REVEAL THE LOOK</span><span class="button-arrow">→</span></button>
+        <p class="reveal-hint" id="revealHint">Choose one piece in each category</p>
+      </aside>
+    </section>
+    <footer class="footer"><span>✿</span> MADE WITH A LITTLE IMAGINATION <span class="footer-right">A STORY YOU CAN WEAR <b>♥</b></span></footer>
+  </main>
+
+  <div class="modal-backdrop" id="endingModal" aria-hidden="true">
+    <section class="ending-card" role="dialog" aria-modal="true" aria-labelledby="endingTitle">
+      <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+      <div class="ending-confetti">✦　✧　✿　✧　✦</div>
+      <div class="ending-kicker" id="endingKicker">THE ROOFTOP RUNWAY</div>
+      <h2 id="endingTitle">You made a moment.</h2>
+      <p class="ending-copy" id="endingCopy"></p>
+      <div class="score-display"><span>STYLE SPARK</span><strong id="scoreValue">0</strong><span>✦</span></div>
+      <div class="ending-choice" id="endingChoice">
+        <span class="eyebrow">AND THEN…</span>
+        <p id="choicePrompt">Jules catches your eye from the wings. What should you do?</p>
+        <div class="choice-buttons"><button data-choice="share">Share the spotlight</button><button data-choice="take">Take a bow</button></div>
+      </div>
+      <div class="ending-actions"><button class="secondary-button" id="playAgain">Style another look</button></div>
+    </section>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
